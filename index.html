@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Club — University Communication</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">✦</div>
+        <div>
+          <strong>Campus<span>Clubs</span></strong>
+          <small>University Communication</small>
+        </div>
+      </div>
+
+      <nav class="main-nav">
+        <button class="nav-link active" data-view="home">Home</button>
+        <button class="nav-link" data-view="clubs">Explore Clubs</button>
+        <button class="nav-link" data-view="chat">Messages</button>
+        <button class="nav-link" data-view="register">Register / Join</button>
+        <button class="nav-link" data-view="events">Events</button>
+      </nav>
+
+      <div class="top-actions">
+        <button class="icon-btn" id="searchBtn" title="Search">⌕</button>
+        <button class="icon-btn" id="notifyBtn" title="Notifications">♢<i></i></button>
+        <div class="avatar avatar-me">AL</div>
+        <span class="user-name">Alex Lin</span>
+      </div>
+      <button class="mobile-menu" id="mobileMenu">☰</button>
+    </header>
+
+    <main>
+      <!-- HOME -->
+      <section class="view active" id="home">
+        <div class="hero">
+          <div class="hero-copy">
+            <span class="eyebrow">OFFICIAL UNIVERSITY COMMUNITY</span>
+            <h1>Discover. Connect.<br><em>Belong.</em></h1>
+            <p>Join university clubs, meet like-minded students, build new skills, and communicate with your campus community in one place.</p>
+            <div class="hero-actions">
+              <button class="primary" data-view="chat">Open Messages →</button>
+              <button class="secondary" data-view="clubs">Explore Clubs</button>
+            </div>
+            <div class="stats">
+              <div><b>45+</b><span>Active Clubs</span></div>
+              <div><b>3,200+</b><span>Student Members</span></div>
+              <div><b>120+</b><span>Annual Events</span></div>
+            </div>
+          </div>
+          <div class="hero-art">
+            <div class="photo-placeholder">
+              <div class="photo-icon">👥</div>
+              <strong>Campus conversations</strong>
+              <span>Clubs • Events • Messages</span>
+            </div>
+            <div class="floating-card"><b>24</b><span>New messages</span></div>
+          </div>
+        </div>
+
+        <div class="section-head">
+          <div><span class="eyebrow">CAMPUS ORGANIZATIONS</span><h2>Explore Featured Clubs</h2></div>
+          <button class="text-btn" data-view="clubs">View All Clubs →</button>
+        </div>
+        <div class="club-grid" id="featuredClubs"></div>
+
+        <div class="benefits">
+          <span class="eyebrow">STUDENT BENEFITS</span>
+          <h2>Everything your campus community needs</h2>
+          <p>Discover groups, chat with members, coordinate activities, and stay updated with campus life.</p>
+          <div class="benefit-grid">
+            <article><div class="benefit-icon">✦</div><h3>Build New Skills</h3><p>Connect with people who share your interests and learn together.</p></article>
+            <article><div class="benefit-icon">♧</div><h3>Make New Friends</h3><p>Start direct conversations and meet students across campus.</p></article>
+            <article><div class="benefit-icon">▣</div><h3>Participate in Events</h3><p>Find events and coordinate plans with your club chats.</p></article>
+            <article><div class="benefit-icon">↗</div><h3>Develop Leadership</h3><p>Create communities and organize meaningful campus activities.</p></article>
+          </div>
+        </div>
+
+        <div class="cta">
+          <div><span>GET STARTED TODAY</span><h2>Ready to join your campus conversation?</h2><p>Create your profile and start chatting with club members.</p></div>
+          <button class="primary" data-view="register">Register for Membership →</button>
+        </div>
+      </section>
+
+      <!-- CLUBS -->
+      <section class="view" id="clubs">
+        <div class="page-title"><span class="eyebrow">CAMPUS DIRECTORY</span><h1>Explore Clubs</h1><p>Find communities that match your interests and start a conversation.</p></div>
+        <div class="filters">
+          <input id="clubSearch" placeholder="Search clubs, interests, categories...">
+          <select id="clubCategory"><option value="all">All categories</option><option>Technology</option><option>Engineering</option><option>Creative Arts</option><option>Sports</option><option>Business</option></select>
+        </div>
+        <div class="club-grid all-clubs" id="allClubs"></div>
+      </section>
+
+      <!-- CHAT -->
+      <section class="view" id="chat">
+        <div class="chat-app">
+          <aside class="chat-sidebar">
+            <div class="chat-sidebar-head">
+              <div><h2>Messages</h2><span>Campus conversations</span></div>
+              <button class="round-btn" id="newChat">＋</button>
+            </div>
+            <div class="chat-search"><span>⌕</span><input id="chatSearch" placeholder="Search chats"></div>
+            <div class="chat-tabs"><button class="active">All</button><button>Unread</button><button>Groups</button></div>
+            <div id="conversationList" class="conversation-list"></div>
+          </aside>
+
+          <section class="chat-window">
+            <div class="chat-header" id="chatHeader">
+              <div class="avatar avatar-blue">CC</div>
+              <div><h3>Select a conversation</h3><span>Choose a chat from the left</span></div>
+              <div class="chat-header-actions"><button>⌕</button><button>⋮</button></div>
+            </div>
+            <div class="message-area" id="messageArea">
+              <div class="empty-chat">
+                <div class="empty-icon">💬</div>
+                <h2>Your campus, one conversation away.</h2>
+                <p>Select a student or club chat to start communicating.</p>
+              </div>
+            </div>
+            <form class="message-composer" id="messageForm">
+              <button type="button" title="Attach">＋</button>
+              <input id="messageInput" placeholder="Type a message..." autocomplete="off">
+              <button type="button" title="Emoji">☺</button>
+              <button class="send-btn" type="submit">➤</button>
+            </form>
+          </section>
+
+          <aside class="chat-info" id="chatInfo">
+            <div class="info-cover"></div>
+            <div class="info-avatar avatar-blue">CC</div>
+            <h3>Campus Club</h3>
+            <p>University community</p>
+            <div class="info-actions"><button>🔔</button><button>⌕</button><button>⋮</button></div>
+            <div class="info-section"><b>Shared groups</b><p>Computer Club · Robotics Club · Campus Events</p></div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- REGISTER -->
+      <section class="view" id="register">
+        <div class="registration-hero"><span class="eyebrow">SPRING 2026 ADMISSIONS</span><h1>Club Membership Registration</h1><p>Join a registered student organization and connect with fellow campus leaders.</p></div>
+        <form class="registration-form" id="registrationForm">
+          <div class="form-section"><h3>♙ Personal Information</h3>
+            <div class="form-grid">
+              <label>Full Name *<input name="name" required placeholder="e.g. Tanvir Ahmed"></label>
+              <label>Email Address *<input name="email" type="email" required placeholder="student@campus.edu"></label>
+              <label>Password *<input name="password" type="password" minlength="8" required placeholder="At least 8 characters"></label>
+              <label>Confirm Password *<input name="confirm" type="password" required placeholder="Re-enter password"></label>
+              <label>Phone Number *<input name="phone" required pattern="01[0-9]{9}" placeholder="01712345678"></label>
+              <label>Date of Birth *<input name="dob" type="date" required></label>
+            </div>
+          </div>
+          <div class="form-section"><h3>♧ Club & Membership Preferences</h3>
+            <div class="form-grid">
+              <label>Select Club *<select name="club" required><option value="">-- Choose a Club --</option><option>Computer Club</option><option>Robotics Club</option><option>Photography Club</option><option>Business Club</option></select></label>
+              <fieldset><legend>Membership Type *</legend><label class="radio"><input type="radio" name="membership" value="General Member" required> General Member</label><label class="radio"><input type="radio" name="membership" value="Executive Member"> Executive Member</label></fieldset>
+            </div>
+            <fieldset><legend>Skills / Interests (select at least one) *</legend><div class="checks">
+              <label><input type="checkbox" name="skills" value="Programming"> Programming</label><label><input type="checkbox" name="skills" value="Web Development"> Web Development</label><label><input type="checkbox" name="skills" value="Graphic Design"> Graphic Design</label><label><input type="checkbox" name="skills" value="Photography"> Photography</label><label><input type="checkbox" name="skills" value="Event Management"> Event Management</label>
+            </div></fieldset>
+          </div>
+          <div class="form-section"><h3>▣ Verification & Background</h3>
+            <div class="form-grid"><label>Address / About Yourself<textarea name="about" placeholder="Briefly share your background or residential hall..."></textarea></label>
+            <label>Student ID Card *<input type="file" name="studentId" accept=".pdf,.jpg,.jpeg,.png" required><small>PDF, PNG or JPG (MAX. 5MB)</small></label></div>
+          </div>
+          <div class="form-actions"><button type="reset" class="secondary">Reset Form</button><button class="primary" type="submit">Submit Registration</button></div>
+        </form>
+      </section>
+
+      <!-- EVENTS -->
+      <section class="view" id="events">
+        <div class="page-title"><span class="eyebrow">CAMPUS CALENDAR</span><h1>Events & Calendar</h1><p>See what is happening across your university clubs.</p></div>
+        <div class="event-grid" id="eventGrid"></div>
+      </section>
+    </main>
+
+    <div class="toast" id="toast"></div>
+    <footer><div><b>CampusClubs</b><span>University communication made simple.</span></div><span>© 2026 Campus Club · Student Community Portal</span></footer>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
